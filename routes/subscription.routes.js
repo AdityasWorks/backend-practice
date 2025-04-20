@@ -1,5 +1,6 @@
 import { subscribe } from 'diagnostics_channel';
 import { Router } from 'express';
+import authorize from '../middleware/auth.middleware';
 
 const subscriptionRouter = Router();
 
@@ -18,7 +19,7 @@ subscriptionRouter.get("/:id",(req, res) => {
 })
 
 
-subscriptionRouter.post("/",(req, res) => {
+subscriptionRouter.post("/",authorize,(req, res) => {
   res.send({
     title: "CREATE subscription",}
   )
