@@ -59,7 +59,7 @@ const subscriptionSchema = new mongoose.Schema({
       validator: function (value) {
         return value > this.startDate;
       },
-      message: "Rewnewal date must be in the Future"
+      message: "Renewal date must be in the Future"
     }
   },
 

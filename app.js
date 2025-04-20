@@ -7,6 +7,7 @@ import subscriptionRouter from "./routes/subscription.routes.js";
 
 import connectDB from "./database/mongodb.js";
 import errorMiddleware from "./middleware/error.middleware.js"
+import cookieParser from "cookie-parser";
 
  
 
@@ -18,9 +19,9 @@ app.use(cookieParser());
 
 
 
-app.use("/api/v1/auth", authRouter)
-app.use("/api/v1/users", userRouter)
-app.use("/api/v1/subscribe", subscriptionRouter)
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/subscribe", subscriptionRouter);
 
 app.use(errorMiddleware);
 

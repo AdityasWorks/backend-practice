@@ -33,7 +33,7 @@ const errorMiddleware = (err, req, res, next) => {
     }
 
 
-    res.statusCode(error.statusCode || 500).json({success: false, error: error.message || "server error"})
+    res.status(error.statusCode || 500).json({success: false, error: error.message || "server error"})
 
   }
 
