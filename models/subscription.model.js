@@ -13,7 +13,7 @@ const subscriptionSchema = new mongoose.Schema({
   price:{
     type: Number,
     required: [true, "Price is required"],
-    minLength: [0, "price must be higher than 0"],
+    min: [0, "price must be higher than 0"],
   },
 
   currency:{
@@ -28,7 +28,7 @@ const subscriptionSchema = new mongoose.Schema({
 
   category:{
     type: String,
-    enum:["fitness","health","nutrition", "wellness"],
+    enum:["fitness","health","nutrition", "wellness","education"],
     required: [true, "Category is required"],
   },
 
@@ -39,13 +39,13 @@ const subscriptionSchema = new mongoose.Schema({
   },
 
   status:{
-    type: Boolean,
+    type: String,
     enum: ["active", "cancelled", "expired"],
     default: "active",
   },
 
   startDate:{
-    type: date,
+    type: Date,
     required: true,
     validate:{
       validator: (value) => value <= new Date(),
@@ -54,7 +54,7 @@ const subscriptionSchema = new mongoose.Schema({
   },
 
   renewalDate:{
-    type: date,
+    type: Date,
     validate:{
       validator: function (value) {
         return value > this.startDate;
